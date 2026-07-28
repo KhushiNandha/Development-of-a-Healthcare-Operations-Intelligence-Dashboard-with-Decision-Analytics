@@ -65,7 +65,7 @@ Medical Dashboard Project/
 │       └── department_monthly_workload.csv
 │
 ├── notebooks/
-│   └── eda_analysis.ipynb
+│   └── eda_analysis.ipynb       | ✅ Completed |
 │
 ├── src/
 │   ├── generate_data.py        | ✅ Completed |
