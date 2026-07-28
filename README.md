@@ -220,6 +220,89 @@ Module 1 Validation Done
 
 ---
 
+## 📊 Exploratory Data Analysis (EDA)
+
+An Exploratory Data Analysis (EDA) was performed on the cleaned healthcare datasets to understand data distribution, identify trends, validate data quality, and generate meaningful operational insights.
+
+### EDA Objectives
+- Analyze patient demographics and registration patterns.
+- Study hospital admission and discharge trends.
+- Evaluate treatment demand and service utilization.
+- Assess staff distribution and workforce efficiency.
+- Analyze bed occupancy and resource utilization.
+- Examine healthcare facility distribution and capacity.
+- Identify relationships between numerical variables using correlation analysis.
+
+### EDA Components
+
+#### 1. Data Understanding
+- Dataset overview
+- Dataset dimensions
+- Data types
+- Statistical summary
+- Missing value analysis
+- Duplicate record analysis
+
+#### 2. Patient Analysis
+- Age Distribution
+- Gender Distribution
+- Patient Distribution by City
+
+#### 3. Admission Analysis
+- Admissions by Department
+- Admission Type Distribution
+- Monthly Admission Trend
+- Length of Stay Distribution
+
+#### 4. Treatment Analysis
+- Treatment Type Distribution
+- Treatment Status Distribution
+- Monthly Treatment Trend
+
+#### 5. Staff Analysis
+- Staff Distribution by Department
+- Staff Distribution by Role
+- Staff Efficiency Distribution
+
+#### 6. Bed Analysis
+- Bed Occupancy Status
+- Bed Distribution by Department
+
+#### 7. Facility Analysis
+- Facility Capacity (Total Beds)
+- Facility Type Distribution
+- Facility Distribution by City
+
+#### 8. Correlation Analysis
+- Correlation Matrix for Numerical Features
+
+#### 9. Key Insights
+- Highest admission month identified.
+- Department with the highest patient workload identified.
+- Most demanded treatment identified.
+- Bed utilization patterns analyzed.
+- Staff efficiency evaluated.
+- Operational trends summarized for decision-making.
+
+---
+
+## 📈 EDA Outcome
+
+The exploratory data analysis provided valuable insights into healthcare operations by identifying patient flow patterns, treatment demand, workforce utilization, bed occupancy, and facility distribution. The findings establish a strong analytical foundation for developing the Medical Operations Intelligence Dashboard in the subsequent project modules.
+
+---
+
+## 📁 EDA Notebook
+
+```
+notebooks/
+└── eda_analysis.ipynb
+```
+
+The notebook contains all data exploration steps, visualizations, observations, and conclusions generated during Module 1.
+
+---------
+
 # Operational KPIs
 | 🔄 Planning  |
 ---
@@ -239,6 +322,8 @@ Module 1 Validation Done
 
 ```bash
 pip install pandas numpy matplotlib plotly dash folium geopandas
+pip install pandas numpy matplotlib seaborn plotly dash folium geopandas jupyter notebook openpyxl missingno
+
 ```
 
 ## Execute Scripts
