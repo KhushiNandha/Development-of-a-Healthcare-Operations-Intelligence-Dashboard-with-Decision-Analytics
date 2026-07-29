@@ -55,14 +55,14 @@ Medical Dashboard Project/
 │       ├── cleaned_staff.csv               | ✅ Completed |
 │       ├── cleaned_beds.csv                | ✅ Completed |
 │       ├── cleaned_facilities.csv          | ✅ Completed |
-│       ├── integrated_healthcare_data.csv
-│       ├── operational_kpis.csv
-│       ├── department_workload.csv
-│       ├── treatment_demand.csv
-│       ├── monthly_admissions.csv
-│       ├── monthly_discharges.csv
-│       ├── monthly_treatments.csv
-│       └── department_monthly_workload.csv
+│       ├── integrated_healthcare_data.csv  | ✅ Completed |
+│       ├── operational_kpis.csv            | ✅ Completed |
+│       ├── department_workload.csv         | ✅ Completed |
+│       ├── treatment_demand.csv            | ✅ Completed |
+│       ├── monthly_admissions.csv          | ✅ Completed |
+│       ├── monthly_discharges.csv          | ✅ Completed |
+│       ├── monthly_treatments.csv          | ✅ Completed |
+│       └── department_monthly_workload.csv | ✅ Completed |
 │
 ├── notebooks/
 │   └── eda_analysis.ipynb       | ✅ Completed |
@@ -70,13 +70,13 @@ Medical Dashboard Project/
 ├── src/
 │   ├── generate_data.py        | ✅ Completed |
 │   ├── data_cleaning.py        | ✅ Completed |
-│   ├── data_integration.py
-│   ├── kpi_calculation.py
-│   ├── trend_analysis.py
-│   ├── operational_insights.py
-│   └── module1_validation.py
+│   ├── data_integration.py     | ✅ Completed |
+│   ├── kpi_calculation.py      | ✅ Completed |
+│   ├── trend_analysis.py       | ✅ Completed |
+│   ├── operational_insights.py | ✅ Completed |
+│   
 │
-├── README.md           | ✅ Updated Till Now |
+├── README.md           | ✅ Updated Till Module 1 |
 ```
 
 ---
@@ -203,16 +203,16 @@ Data Generation
 Data Cleaning
         │
         ▼
-Data Integration    | 🔄 Planning  |
+Data Integration    
         │
         ▼
-KPI Calculation     | 🔄 Planning  |
+KPI Calculation     
         │
         ▼
-Trend Analysis      | 🔄 Planning  |
+Trend Analysis      
         │
         ▼
-Operational Insights | 🔄 Planning  |
+Operational Insights 
         │
         ▼
 Module 1 Validation Done
@@ -299,21 +299,46 @@ notebooks/
 └── eda_analysis.ipynb
 ```
 
-The notebook contains all data exploration steps, visualizations, observations, and conclusions generated during Module 1.
 
 ---------
 
 # Operational KPIs
-| 🔄 Planning  |
+
+The system calculates:
+
+* Total Patients
+* Total Admissions
+* Total Discharges
+* Average Length of Stay
+* Bed Utilization
+* Staff Efficiency
+* Department Workload
+* Treatment Demand
+
 ---
 
 # Trend Analysis
-| 🔄 Planning  |
+
+The system generates:
+
+* Monthly Admission Trends
+* Monthly Discharge Trends
+* Monthly Treatment Trends
+* Department Monthly Workload
 
 ---
 
-# Operational Insights  
-| 🔄 Planning  |
+# Operational Insights
+
+The project automatically identifies:
+
+* Highest Admission Month
+* Lowest Admission Month
+* Highest Workload Department
+* Most Demanded Treatment
+* Bed Utilization Status
+* Staff Efficiency Status
+
 ---
 
 # How to Run the Project
