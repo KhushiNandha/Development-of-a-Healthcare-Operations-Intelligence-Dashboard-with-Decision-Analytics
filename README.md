@@ -842,33 +842,43 @@ The major insights obtained during Module 2 include:
 
 ## Module 1
 
-- [x] Dataset Collection
-- [x] Data Cleaning
-- [x] Data Preparation
-- [x] Data Integration
-- [x] KPI Generation
-- [x] Exploratory Data Analysis
-- [x] EDA Charts
-- [x] README Documentation
-- [x] GitHub Pull Request
+ Dataset Collection
+ Data Cleaning
+ Data Preparation
+ Data Integration
+ KPI Generation
+ Exploratory Data Analysis
+ EDA Charts
+ README Documentation
+ GitHub Pull Request
 
 ## Module 2
 
-- [x] Patient Flow Analysis
-- [x] Service Demand Analysis
-- [x] Department Workload Analysis
-- [x] Operational Bottleneck Analysis
-- [x] Department Performance Analysis
-- [x] Monthly Department Trend Analysis
-- [x] Treatment Completion Analysis
-- [x] Operational Risk Analysis
-- [x] Power BI Data Model
-- [x] Executive Dashboard
-- [x] Patient Analytics Dashboard
-- [x] Admissions Analytics Dashboard
-- [x] Facilities Analytics Dashboard
-- [x] Staff Analytics Dashboard
-- [x] Treatment Analytics Dashboard
+ Patient Flow Analysis
+   Service Demand Analysis
+   Department Workload Analysis
+   Operational Bottleneck Analysis
+   Department Performance Analysis
+   Monthly Department Trend Analysis
+   Treatment Completion Analysis
+   Operational Risk Analysis
+   Power BI Data Model
+   Executive Dashboard
+   Patient Analytics Dashboard
+   Admissions Analytics Dashboard
+   Facilities Analytics Dashboard
+   Staff Analytics Dashboard
+   Treatment Analytics Dashboard
+
+# Module 3 
+
+ Bed utilization
+ Staff utilization
+ Facility capacity
+ Department resource utilization
+ Resource efficiency
+ Resource bottlenecks
+ Utilization trends
 
 ---
 
@@ -919,7 +929,7 @@ python src/data_cleaning.py
 | -------------------------------------------------------- | ----------- |
 | Module 1 – Data Integration & Operational Analytics      | ✅ Completed  |
 | Module 2 – Patient Flow Intelligence                     | ✅ Completed  |
-| Module 3 – Resource Utilization Intelligence             | Not Working  |
+| Module 3 – Resource Utilization Intelligence             | ✅ Completed  |
 | Module 4 – Geographic Intelligence & Executive Dashboard | Not working  |
 
 ---
