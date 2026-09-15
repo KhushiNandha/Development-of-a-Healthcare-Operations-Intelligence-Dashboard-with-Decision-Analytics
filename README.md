@@ -1,936 +1,705 @@
-# medical-operations-dashboard-team-a-batch-2
 
-🏥 Medical Operations Intelligence Dashboard
+###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2
 
-## Project Overview
-
-The **Medical Operations Intelligence Dashboard** is a healthcare analytics platform developed to monitor and analyze hospital operational performance. The project integrates multiple healthcare datasets, calculates key operational metrics, identifies trends, and provides actionable insights for hospital administrators.
-
-The objective is to transform raw healthcare operational data into meaningful intelligence that supports data-driven decision-making, resource optimization, and improved patient service delivery.
+**Batch 2 / Team A**
 
 ---
 
-# Project Objectives
+## 📌 Project Overview
 
-* Integrate healthcare operational datasets.
-* Clean and preprocess healthcare data.
-* Calculate operational Key Performance Indicators (KPIs).
-* Analyze patient flow and service demand.
-* Monitor resource utilization and operational capacity.
-* Generate operational insights through trend analysis.
-* Build interactive dashboards for healthcare management.
+The **Medical Operations Intelligence Dashboard** is a Power BI-based healthcare analytics project designed to provide an integrated view of hospital operations.
+
+The final Power BI model shown in the project uses the following tables:
+
+- `Dim_Department`
+- `Dim_Patient`
+- `Dim_Facility`
+- `Dim_Date`
+- `Fact_Admissions`
+- `Fact_Treatments`
+- `Fact_Beds`
+- `Fact_Staff`
+- `_Measures`
+
+The dashboard brings patient, admission, treatment, staff, bed, facility, department, date and geographic information together for interactive analysis.
+
+> **Data authenticity note:** This README documents the final Power BI model and dashboard. No new records are added here, and the original source dataset is not modified.
 
 ---
 
-# Key Features
+# 🎯 Project Objectives
 
-### Module 1 – Healthcare Data Integration & Operational Analytics
+- Analyze hospital admissions and patient activity.
+- Monitor treatment demand and treatment status.
+- Analyze department-level operational workload.
+- Understand bed status and hospital capacity.
+- Analyze staff shifts and staff efficiency.
+- Compare facilities and cities.
+- Track clinical and operational KPIs.
+- Provide management-oriented insights through Power BI.
 
-* Healthcare data generation       | ✅ Completed |
-* Data cleaning and preprocessing  | ✅ Completed |
-* Data integration
-* KPI calculation
-* Trend analysis
-* Operational insights generation
-* Data validation
+---
 
-# Project Structure
+# 🏗️ Final Power BI Data Model
+
+The final model is organized around dimension tables and fact tables.
 
 ```text
-Medical Dashboard Project/
-│
-├── data/
-│   ├── raw/                    | ✅ Completed |
-│   │   ├── patients.csv        | ✅ Completed |
-│   │   ├── admissions.csv      | ✅ Completed |
-│   │   ├── treatments.csv      | ✅ Completed |
-│   │   ├── staff.csv           | ✅ Completed |
-│   │   ├── beds.csv            | ✅ Completed |
-│   │   └── facilities.csv      | ✅ Completed |
-│   │
-│   └── processed/
-│       ├── cleaned_patients.csv            | ✅ Completed |
-│       ├── cleaned_admissions.csv          | ✅ Completed |
-│       ├── cleaned_treatments.csv          | ✅ Completed |
-│       ├── cleaned_staff.csv               | ✅ Completed |
-│       ├── cleaned_beds.csv                | ✅ Completed |
-│       ├── cleaned_facilities.csv          | ✅ Completed |
-│       ├── integrated_healthcare_data.csv  | ✅ Completed |
-│       ├── operational_kpis.csv            | ✅ Completed |
-│       ├── department_workload.csv         | ✅ Completed |
-│       ├── treatment_demand.csv            | ✅ Completed |
-│       ├── monthly_admissions.csv          | ✅ Completed |
-│       ├── monthly_discharges.csv          | ✅ Completed |
-│       ├── monthly_treatments.csv          | ✅ Completed |
-│       └── department_monthly_workload.csv | ✅ Completed |
-│
-├── notebooks/
-│   └── eda_analysis.ipynb       | ✅ Completed |
-│
-├── src/
-│   ├── generate_data.py        | ✅ Completed |
-│   ├── data_cleaning.py        | ✅ Completed |
-│   ├── data_integration.py     | ✅ Completed |
-│   ├── kpi_calculation.py      | ✅ Completed |
-│   ├── trend_analysis.py       | ✅ Completed |
-│   ├── operational_insights.py | ✅ Completed |
-│   
-│
-├── README.md           | ✅ Updated Till Module 2 |
+                    Dim_Department
+                          │
+                          │
+        ┌─────────────────┼─────────────────┐
+        │                 │                 │
+        ▼                 ▼                 ▼
+ Fact_Treatments    Fact_Admissions     Fact_Beds
+        │                 │                 │
+        │                 │                 ▼
+        │                 │           Dim_Facility
+        │                 │
+        │                 ▼
+        │              Dim_Date
+        │
+        ▼
+   Dim_Patient
+
+        │
+        ▼
+   Fact_Staff
+
+              ┌───────────────┐
+              │   _Measures   │
+              │ DAX Measures  │
+              └───────────────┘
 ```
 
----
-
-# Dataset Description
-
-The project uses six operational healthcare datasets.
-
-## Patients
-
-Stores patient demographic information.
-
-Columns:
-
-* patient_id
-* patient_name
-* age
-* gender
-* city
-* blood_group
-* registration_date
+The exact relationships and fields used in the final model are documented below according to the Power BI model.
 
 ---
 
-## Admissions
+# 🗃️ Tables in the Final Power BI Model
 
-Stores hospital admission records.
+## 1. `Dim_Department`
 
-Columns:
+The department dimension contains the department-level reference used across the operational fact tables.
 
-* admission_id
-* patient_id
-* department
-* admission_date
-* discharge_date
-* admission_type
-* diagnosis
+### Field
+
+| Field |
+|---|
+| `department` |
 
 ---
 
-## Treatments
+## 2. `Dim_Patient`
 
-Stores treatment-related information.
+The patient dimension contains patient-level demographic and registration information.
 
-Columns:
+### Fields
 
-* treatment_id
-* patient_id
-* department
-* treatment_type
-* treatment_date
-* treatment_status
-* treatment_cost
-
----
-
-## Staff
-
-Stores hospital workforce information.
-
-Columns:
-
-* staff_id
-* staff_name
-* role
-* department
-* experience_years
-* shift
-* shifts_assigned
-* shifts_worked
+| Field |
+|---|
+| `age` |
+| `city` |
+| `gender` |
+| `patient_id` |
+| `registration date` |
 
 ---
 
-## Beds
+## 3. `Fact_Treatments`
 
-Stores hospital bed utilization data.
+This fact table contains treatment/service activity.
 
-Columns:
+### Fields
 
-* bed_id
-* department
-* room_number
-* status
-* bed_type
-
----
-
-## Facilities
-
-Stores healthcare facility information.
-
-Columns:
-
-* facility_id
-* facility_name
-* city
-* capacity
-* utilization_rate
+| Field |
+|---|
+| `department` |
+| `patient id` |
+| `treatment date` |
+| `treatment id` |
+| `treatment status` |
+| `treatment type` |
 
 ---
 
-# Technologies Used
+## 4. `Fact_Admissions`
 
-* Python 3.x
-* Pandas
-* NumPy
-* Plotly
-* Dash
-* Matplotlib
-* Folium
-* GeoPandas
+This fact table contains hospital admission activity and length-of-stay information.
 
----
+### Fields
 
-# Module 1 Workflow
-
-```
-Raw Healthcare Data
-        │
-        ▼
-Data Generation
-        │
-        ▼
-Data Cleaning
-        │
-        ▼
-Data Integration    
-        │
-        ▼
-KPI Calculation     
-        │
-        ▼
-Trend Analysis      
-        │
-        ▼
-Operational Insights 
-        │
-        ▼
-Module 1 Validation Done
-```
+| Field |
+|---|
+| `admission date` |
+| `admission id` |
+| `admission type` |
+| `department` |
+| `discharge date` |
+| `length of stay` |
+| `patient id` |
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)
+## 5. `Fact_Beds`
 
-An Exploratory Data Analysis (EDA) was performed on the cleaned healthcare datasets to understand data distribution, identify trends, validate data quality, and generate meaningful operational insights.
+This fact table contains bed-level operational information.
 
-### EDA Objectives
-- Analyze patient demographics and registration patterns.
-- Study hospital admission and discharge trends.
-- Evaluate treatment demand and service utilization.
-- Assess staff distribution and workforce efficiency.
-- Analyze bed occupancy and resource utilization.
-- Examine healthcare facility distribution and capacity.
-- Identify relationships between numerical variables using correlation analysis.
+### Fields
 
-### EDA Components
-
-#### 1. Data Understanding
-- Dataset overview
-- Dataset dimensions
-- Data types
-- Statistical summary
-- Missing value analysis
-- Duplicate record analysis
-
-#### 2. Patient Analysis
-- Age Distribution
-- Gender Distribution
-- Patient Distribution by City
-
-#### 3. Admission Analysis
-- Admissions by Department
-- Admission Type Distribution
-- Monthly Admission Trend
-- Length of Stay Distribution
-
-#### 4. Treatment Analysis
-- Treatment Type Distribution
-- Treatment Status Distribution
-- Monthly Treatment Trend
-
-#### 5. Staff Analysis
-- Staff Distribution by Department
-- Staff Distribution by Role
-- Staff Efficiency Distribution
-
-#### 6. Bed Analysis
-- Bed Occupancy Status
-- Bed Distribution by Department
-
-#### 7. Facility Analysis
-- Facility Capacity (Total Beds)
-- Facility Type Distribution
-- Facility Distribution by City
-
-#### 8. Correlation Analysis
-- Correlation Matrix for Numerical Features
-
-#### 9. Key Insights
-- Highest admission month identified.
-- Department with the highest patient workload identified.
-- Most demanded treatment identified.
-- Bed utilization patterns analyzed.
-- Staff efficiency evaluated.
-- Operational trends summarized for decision-making.
+| Field |
+|---|
+| `bed id` |
+| `bed type` |
+| `department` |
+| `facility id` |
+| `status` |
 
 ---
 
-## 📈 EDA Outcome
+## 6. `Fact_Staff`
 
-The exploratory data analysis provided valuable insights into healthcare operations by identifying patient flow patterns, treatment demand, workforce utilization, bed occupancy, and facility distribution. The findings establish a strong analytical foundation for developing the Medical Operations Intelligence Dashboard in the subsequent project modules.
+This fact table contains workforce and shift information.
 
----
+### Fields
 
-## 📁 EDA Notebook
-
-```
-notebooks/
-└── eda_analysis.ipynb
-```
-
-
----------
-
-# Operational KPIs
-
-The system calculates:
-
-* Total Patients
-* Total Admissions
-* Total Discharges
-* Average Length of Stay
-* Bed Utilization
-* Staff Efficiency
-* Department Workload
-* Treatment Demand
+| Field |
+|---|
+| `department` |
+| `role` |
+| `shifts assigned` |
+| `shifts worked` |
+| `staff efficiency` |
+| `staff id` |
 
 ---
 
-# Trend Analysis
+## 7. `Dim_Facility`
 
-The system generates:
+The facility dimension contains facility and city-level capacity information.
 
-* Monthly Admission Trends
-* Monthly Discharge Trends
-* Monthly Treatment Trends
-* Department Monthly Workload
+### Fields
 
----
-
-# Operational Insights
-
-The project automatically identifies:
-
-* Highest Admission Month
-* Lowest Admission Month
-* Highest Workload Department
-* Most Demanded Treatment
-* Bed Utilization Status
-* Staff Efficiency Status
+| Field |
+|---|
+| `city` |
+| `facility id` |
+| `facility name` |
+| `facility type` |
+| `total beds` |
 
 ---
 
-# Module 2 - Healthcare Operations Analysis
+## 8. `Dim_Date`
 
-## Objective
+The date dimension provides the time attributes used for time-based analysis.
 
-The objective of Module 2 was to perform deeper operational analysis using the cleaned healthcare datasets and prepare insights that could support hospital management decisions.
+### Fields
 
-The main areas covered were:
-
-1. Patient Flow Analysis
-2. Service Demand Analysis
-3. Department Workload Analysis
-4. Operational Bottleneck Analysis
-5. Department Performance Analysis
-6. Monthly Department Trend Analysis
-7. Treatment Completion Analysis
-8. Operational Risk Analysis
-9. Power BI Dashboard Development
+| Field |
+|---|
+| `date` |
+| `month` |
+| `month number` |
+| `quarter` |
+| `year` |
+| `year month` |
 
 ---
 
-# 1. Patient Flow Analysis
+# 📐 Measures
 
-The admissions dataset was analyzed to understand patient movement and admission patterns.
+The final Power BI model contains a dedicated `_Measures` table for analytical calculations.
 
-### Analyses Performed
+The measures visible in the final model include:
 
-- Monthly admissions
-- Monthly discharges
-- Admission type distribution
-- Department-wise patient flow
-- Average length of stay
+- Admission Growth %
+- Admissions
+- Assigned Shifts
+- Available Beds
+- Avg LOS
+- Avg Pressure
+- Cancellation Rate
+- Capacity Reconciliation Gap
+- Completed Treatments
+- Completion Benchmark
+- Completion Rate
+- Demand Concentration %
+- Department Demand
+- Discharge Growth %
+- Discharges
+- Facilities
+- Fulfillment Rate
+- LOS Benchmark
+- Maintenance Beds
+- Net Flow
 
-### Results
-
-Average Length of Stay:
-
-**7.58 days**
-
-Admission types:
-
-- Referral: **682**
-- Routine: **664**
-- Emergency: **654**
-
-Department patient flow:
-
-| Department | Patients |
-|---|---:|
-| General Medicine | 272 |
-| Oncology | 263 |
-| Dermatology | 262 |
-| Emergency | 258 |
-| Cardiology | 256 |
-| Neurology | 249 |
-| Pediatrics | 221 |
-| Orthopedics | 219 |
+These measures are used by the Power BI visuals and KPI calculations.
 
 ---
 
-# 2. Service Demand Analysis
+# 📊 Final Dashboard
 
-Treatment data was analyzed to understand the demand for different healthcare services.
+The final Power BI report contains the following analytical pages:
 
-### Treatment Demand
-
-| Treatment Type | Count |
-|---|---:|
-| Consultation | 432 |
-| Surgery | 401 |
-| Medication | 392 |
-| Diagnostics | 388 |
-| Therapy | 387 |
-
-### Treatment Status
-
-| Status | Count |
-|---|---:|
-| Completed | 1501 |
-| Pending | 396 |
-| Cancelled | 103 |
-
-### Key Finding
-
-**Consultation** was the most demanded treatment with **432 treatments**.
+1. **Executive Dashboard**
+2. **Patient Analytics**
+3. **Admissions Analytics**
+4. **Facilities Analytics**
+5. **Staff Analytics**
+6. **Treatment Analytics**
+7. **Geographic Performance**
+8. **Insights & Recommendations**
 
 ---
 
-# 3. Department Workload Analysis
+# 1. 🏥 Executive Dashboard
 
-Department workload was calculated using admissions and treatments.
+The Executive Dashboard provides a high-level view of hospital operations.
 
-### Results
+### Main areas
 
-| Department | Admissions | Treatments | Total Workload | Rank |
-|---|---:|---:|---:|---:|
-| Neurology | 249 | 291 | 540 | 1 |
-| Oncology | 263 | 260 | 523 | 2 |
-| Dermatology | 262 | 244 | 506 | 3 |
-| Cardiology | 256 | 249 | 505 | 4 |
-| Emergency | 258 | 247 | 505 | 5 |
-| General Medicine | 272 | 218 | 490 | 6 |
-| Pediatrics | 221 | 247 | 468 | 7 |
-| Orthopedics | 219 | 244 | 463 | 8 |
-
-### Key Findings
-
-- Highest workload department: **Neurology**
-- Lowest workload department: **Orthopedics**
-- Neurology had a total workload of **540**.
-
----
-
-# 4. Operational Bottleneck Analysis
-
-An operational bottleneck report was created to identify important operational pressure points.
-
-### Results
-
-| Metric | Result |
-|---|---|
-| Highest Admission Month | 2025-08 |
-| Lowest Admission Month | 2025-09 |
-| Highest Discharge Month | 2025-08 |
-| Lowest Discharge Month | 2026-07 |
-| Highest Workload Department | Neurology |
-| Lowest Workload Department | Orthopedics |
-| Most Demanded Treatment | Consultation |
-| Most Common Admission Type | Referral |
-| Average Length of Stay | 7.58 days |
-
-This analysis helps identify periods and departments requiring closer operational monitoring.
-
----
-
-# 5. Department Performance Analysis
-
-Department performance was evaluated using admissions, average length of stay, treatments, workload, and a calculated performance score.
-
-### Results
-
-| Department | Admissions | Avg. Length of Stay | Treatments | Workload | Performance Score | Rank |
-|---|---:|---:|---:|---:|---:|---:|
-| Neurology | 249 | 8.00 | 291 | 540 | 100.00 | 1 |
-| Oncology | 263 | 7.72 | 260 | 523 | 96.85 | 2 |
-| Dermatology | 262 | 7.55 | 244 | 506 | 93.70 | 3 |
-| Cardiology | 256 | 7.37 | 249 | 505 | 93.52 | 4 |
-| Emergency | 258 | 7.25 | 247 | 505 | 93.52 | 5 |
-| General Medicine | 272 | 7.37 | 218 | 490 | 90.74 | 6 |
-| Pediatrics | 221 | 7.91 | 247 | 468 | 86.67 | 7 |
-| Orthopedics | 219 | 7.53 | 244 | 463 | 85.74 | 8 |
-
-### Key Findings
-
-- Top performing department: **Neurology**
-- Average department performance score: **92.59**
-
----
-
-# 6. Monthly Department Trend Analysis
-
-Monthly trends were analyzed by combining departmental admissions and treatments.
-
-The analysis generated **144 department-month records**.
-
-The following metrics were included:
-
-- Department
-- Month
+- Patient activity
 - Admissions
 - Treatments
-- Total Workload
+- Facilities
+- Beds
+- Department performance
+- Monthly admission activity
+- Patient distribution
+- Gender distribution
 
-This analysis helps understand how workload changes across departments over time.
-
----
-
-# 7. Treatment Completion Analysis
-
-Treatment completion performance was analyzed for each department.
-
-### Results
-
-| Department | Total Treatments | Completed | Pending | Cancelled | Completion Rate |
-|---|---:|---:|---:|---:|---:|
-| Neurology | 291 | 228 | 49 | 14 | 78.35% |
-| Orthopedics | 244 | 187 | 44 | 13 | 76.64% |
-| Emergency | 247 | 189 | 45 | 13 | 76.52% |
-| Pediatrics | 247 | 188 | 48 | 11 | 76.11% |
-| Cardiology | 249 | 188 | 53 | 8 | 75.50% |
-| General Medicine | 218 | 162 | 41 | 15 | 74.31% |
-| Oncology | 260 | 191 | 56 | 13 | 73.46% |
-| Dermatology | 244 | 168 | 60 | 16 | 68.85% |
-
-### Key Findings
-
-- Best performing department: **Neurology**
-- Average completion rate: **74.97%**
-- Dermatology had the lowest completion rate at **68.85%**.
-- Dermatology also had the highest pending rate at **24.59%**.
+The page acts as the starting point for management-level exploration.
 
 ---
 
-# 8. Operational Risk Analysis
+# 2. 👤 Patient Analytics
 
-Operational risks were identified using department workload and treatment completion performance.
+The Patient Analytics page focuses on patient-level demographic and registration information.
 
-### Risks Identified
+### Analysis
 
-| Department | Risk Type | Severity | Recommendation |
-|---|---|---|---|
-| Neurology | High Workload | High | Review staffing and resource allocation |
-| Oncology | High Workload | High | Review staffing and resource allocation |
-| Oncology | Low Completion Rate | Medium | Investigate treatment delays |
-| Dermatology | High Workload | High | Review staffing and resource allocation |
-| Dermatology | Low Completion Rate | Medium | Investigate treatment delays |
-| Cardiology | High Workload | High | Review staffing and resource allocation |
-| Emergency | High Workload | High | Review staffing and resource allocation |
-| General Medicine | Low Completion Rate | Medium | Investigate treatment delays |
+- Patient count
+- Age
+- Gender
+- City
+- Registration activity
+- Patient distribution
 
-### Total Risks Identified
-
-**8 risks**
-
----
-
-# Module 2 Power BI Dashboard
-
-The final Power BI dashboard was developed using the healthcare datasets available in the project.
-
-## Data Tables Used in Power BI
-
-The Power BI model contains the following tables:
-
-- `admissions`
-- `beds`
-- `Date`
-- `facilities`
-- `patients`
-- `staff`
-- `treatments`
-
-The `Date` table is used for date-based analysis and trends.
-
----
-
-# Final Dashboard Pages
-
-The final Power BI dashboard contains **six pages**.
-
-## 1. Executive Dashboard
-
-The Executive Dashboard provides an overall view of hospital operations.
-
-### Main KPIs
-
-- Total Patients
-- Total Admissions
-- Total Treatments
-- Total Staff
-- Total Facilities
-- Total Beds
-
-### Main Visuals
-
-- Admissions by Department
-- Monthly Admissions Trend
-- Patient Distribution by City
-- Patients by Gender
-- Department and other filtering options
-
-This page provides hospital management with a high-level overview of operational activity.
-
-<img width="1330" height="746" alt="image" src="https://github.com/user-attachments/assets/be108e94-19c6-4e45-b745-8b97676566d5" />
-
-
----
-
-# 2. Patient Analytics Dashboard
-
-The Patient Analytics page focuses on patient demographics and registration patterns.
-
-### Main KPIs
-
-- Total Patients
-- Average Age
-- Male Patients
-- Female Patients
-- Cities Covered
-
-### Main Visuals
-
-- Patients by Age Group
-- Top 5 Cities by Patients
-- Patients by Gender
-- Patient Age Distribution
-- Patient Registration Trend
-
-### Filters
+### Main filters
 
 - Gender
 - City
-- Registration Date
-
-<img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/866ae029-c71d-4bba-8911-69e137e08268" />
-
+- Date
 
 ---
 
-# 3. Admissions Analytics Dashboard
+# 3. 🏥 Admissions Analytics
 
-The Admissions Analytics page focuses on admission activity and patient flow.
+The Admissions Analytics page focuses on hospital admission and discharge activity.
 
-### Main KPIs
+### Analysis
 
-- Total Admissions
-- Average Length of Stay
-- Emergency Admissions
-- Routine Admissions
-- Discharged Admissions
-
-### Main Visuals
-
-- Admissions by Department
-- Admissions by Type
-- Admissions by Length of Stay
-- Monthly Admissions Trend
-- Admissions by Department & Type
-
-### Filters
-
-- Admission Type
+- Admissions
+- Admission type
 - Department
-- Admission Date
-- Discharge Date
+- Admission date
+- Discharge date
+- Length of stay
+- Monthly admission activity
+- Patient movement
 
-<img width="1323" height="749" alt="image" src="https://github.com/user-attachments/assets/e0983587-5ec4-42b5-9de5-3f83737fce37" />
+### Main filters
 
+- Admission type
+- Department
+- Admission date
+- Discharge date
 
 ---
 
-# 4. Facilities Analytics Dashboard
+# 4. 🏢 Facilities Analytics
 
-The Facilities Analytics page provides information about hospital facilities and bed capacity.
+The Facilities Analytics page focuses on hospital facilities and bed capacity.
 
-### Main KPIs
+### Analysis
 
-- Total Facilities
-- Total Beds
-- Cities Covered
-- Average Beds per Facility
-- Maximum Facility Beds
-
-### Main Visuals
-
-- Facilities by Type
-- Beds by Facility Type
-- Top 10 Facilities by Bed Capacity
-- Facilities by City
-
-### Filters
-
-- Facility Type
+- Total facilities
+- Total beds
+- Facility type
+- Facility name
 - City
-- Facility Name
+- Bed capacity
+- Facility comparisons
 
-<img width="1328" height="735" alt="image" src="https://github.com/user-attachments/assets/965c22a0-7d8e-4ea6-8b03-3391a877c615" />
+### Main filters
 
+- Facility type
+- City
+- Facility
 
 ---
 
-# 5. Staff Analytics Dashboard
+# 5. 👨‍⚕️ Staff Analytics
 
-The Staff Analytics page focuses on workforce distribution, shifts, and staff efficiency.
+The Staff Analytics page focuses on workforce utilization.
 
-### Main KPIs
+### Analysis
 
-- Total Staff
-- Total Shifts Worked
-- Total Shifts Assigned
-- Departments Covered
-- Average Staff Efficiency
+- Staff distribution
+- Staff by department
+- Staff by role
+- Assigned shifts
+- Worked shifts
+- Staff efficiency
+- Department workforce comparison
 
-### Main Visuals
-
-- Staff by Department
-- Staff by Role
-- Shifts Worked vs Assigned by Department
-- Staff Efficiency by Role
-- Staff Efficiency by Department
-
-### Filters
+### Main filters
 
 - Department
 - Role
 
-<img width="1327" height="742" alt="image" src="https://github.com/user-attachments/assets/67b1aa6c-f01e-4f19-afe4-eb020e09d6f7" />
-
-
 ---
 
-# 6. Treatment Analytics Dashboard
+# 6. 💊 Treatment Analytics
 
 The Treatment Analytics page focuses on healthcare service demand and treatment completion.
 
-### Main KPIs
+### Analysis
 
-- Total Treatments
-- Pending Treatments
-- Cancelled Treatments
-- Completed Treatments
-- Treatment Types
+- Total treatments
+- Treatment type
+- Treatment status
+- Completed treatments
+- Pending treatments
+- Cancelled treatments
+- Monthly treatment activity
+- Department-level treatment demand
 
-### Main Visuals
+### Main filters
 
-- Treatments by Type
-- Treatment Status Distribution
-- Monthly Treatment Trend
-- Treatments by Department
-- Treatments by Department & Type
-
-### Filters
-
-- Treatment Status
-- Treatment Type
+- Treatment status
+- Treatment type
 - Department
 - Date
 
-<img width="1327" height="731" alt="image" src="https://github.com/user-attachments/assets/a82cc236-8aef-4e90-806e-1d1a338e189a" />
+---
 
+# 7. 🌍 Geographic Performance
+
+The Geographic Performance page uses the city information available in the final Power BI model.
+
+### Analysis
+
+- Patients by city
+- Facilities by city
+- Facility bed capacity by city
+- Admissions by city
+- Geographic comparisons
+
+### Filters
+
+- City
+- Department
+- Date
+
+This page helps compare patient activity and healthcare capacity across locations represented in the dashboard.
 
 ---
 
-# Power BI Dashboard Features
+# 8. 💡 Insights & Recommendations
 
-The final dashboard provides interactive analysis through:
+The final page converts the dashboard analysis into management-oriented observations and recommendations.
 
-- KPI cards
-- Bar charts
-- Donut charts
-- Line charts
-- Stacked column charts
-- Maps
-- Date filters
-- Department filters
-- Gender filters
-- City filters
-- Treatment filters
-- Interactive navigation between dashboard pages
+## Bed Utilization
 
-The dashboard allows hospital management to explore operational data from multiple perspectives.
+The dashboard reports **63.9% bed occupancy**, indicating that hospital bed capacity is being utilized while some capacity remains available.
 
----
+## Patient Stay
 
-# Key Module 2 Insights
+The operational analysis reports an **average length of stay of 7.58 days**.
 
-The major insights obtained during Module 2 include:
+## Workforce Performance
 
-1. **Neurology** had the highest overall department workload.
-2. **Orthopedics** had the lowest department workload.
-3. **Consultation** was the most demanded treatment.
-4. The average length of stay was **7.58 days**.
-5. **Neurology** had the highest treatment completion rate of **78.35%**.
-6. **Dermatology** had the lowest treatment completion rate of **68.85%**.
-7. **8 operational risks** were identified.
-8. August 2025 had the highest admission activity.
-9. September 2025 had the lowest admission activity.
-10. Referral was the most common admission type.
-11. Staff efficiency averaged approximately **84.34%**.
-12. The final Power BI dashboard provides six analytical views of hospital operations.
+The dashboard reports **84.34% staff efficiency**, providing a view of workforce utilization.
+
+## Treatment Completion
+
+The dashboard reports approximately **75.1% treatment completion**.
 
 ---
 
-# Tools & Technologies
+# 📌 Operational Findings
 
-## Programming & Analysis
+The Power BI analysis identifies the following department-level observations:
+
+- **Neurology** recorded the highest overall workload in the operational analysis.
+- **Orthopedics** recorded the lowest overall workload.
+- Neurology's workload signal was **540**.
+- **Consultation** was the highest-volume treatment type.
+- Neurology recorded a treatment completion rate of **78.35%**.
+- Dermatology recorded a treatment completion rate of **68.85%**.
+- Dermatology recorded the highest pending treatment rate at **24.59%**.
+
+These findings are based on the analytical values represented in the project dashboard.
+
+---
+
+# ⚠️ Operational Areas Requiring Attention
+
+The dashboard analysis highlights areas that can be monitored by hospital management:
+
+### Capacity
+
+Monitor bed utilization and available capacity against admission demand.
+
+### Patient Flow
+
+Monitor length of stay, admissions and discharge activity to identify possible delays.
+
+### Workforce
+
+Review assigned versus worked shifts and department-level staff efficiency.
+
+### Treatment
+
+Monitor pending and cancelled treatments, particularly in departments with lower completion.
+
+### Geographic Performance
+
+Compare patient activity and facility capacity across cities.
+
+---
+
+# 🎯 Management Recommendations
+
+## 1. Optimize Bed Allocation
+
+Use bed status, department, facility and city information to monitor capacity and support better allocation.
+
+## 2. Improve Patient Flow
+
+Monitor admission activity, discharge activity and length of stay to identify areas where patient flow may require attention.
+
+## 3. Balance Workforce
+
+Use assigned shifts, worked shifts and staff efficiency to support workforce and shift planning.
+
+## 4. Improve Treatment Completion
+
+Monitor treatment status by department and treatment type to identify areas with higher pending or cancelled activity.
+
+## 5. Monitor Geographic Demand
+
+Use city-level patient, admission and facility information to compare demand and capacity across locations.
+
+---
+
+# 🔄 Project Workflow
+
+```text
+Healthcare Data
+      ↓
+Data Preparation
+      ↓
+Data Integration
+      ↓
+Power BI Data Model
+      ↓
+DAX Measures
+      ↓
+Interactive Visualizations
+      ↓
+Operational Analysis
+      ↓
+Insights
+      ↓
+Recommendations
+      ↓
+Management Decision Support
+```
+
+---
+
+# 🛠️ Tools & Technologies
+
+### Data & Analysis
 
 - Python
 - Pandas
-- Matplotlib
+- NumPy
 - Jupyter Notebook
 
-## Visualization & Business Intelligence
+### Business Intelligence
 
 - Microsoft Power BI
 
-## Development Environment
-
-- VS Code
-- Jupyter Notebook
-
-## Version Control
+### Version Control
 
 - Git
 - GitHub
 
 ---
 
-# Project Progress
+# 📁 Final Project Structure
 
-## Module 1
+A recommended repository structure is:
 
- Dataset Collection
- Data Cleaning
- Data Preparation
- Data Integration
- KPI Generation
- Exploratory Data Analysis
- EDA Charts
- README Documentation
- GitHub Pull Request
-
-## Module 2
-
- Patient Flow Analysis
-   Service Demand Analysis
-   Department Workload Analysis
-   Operational Bottleneck Analysis
-   Department Performance Analysis
-   Monthly Department Trend Analysis
-   Treatment Completion Analysis
-   Operational Risk Analysis
-   Power BI Data Model
-   Executive Dashboard
-   Patient Analytics Dashboard
-   Admissions Analytics Dashboard
-   Facilities Analytics Dashboard
-   Staff Analytics Dashboard
-   Treatment Analytics Dashboard
-
-# Module 3 
-
- Bed utilization
- Staff utilization
- Facility capacity
- Department resource utilization
- Resource efficiency
- Resource bottlenecks
- Utilization trends
-
----
-
-# Conclusion
-
-Module 1 established the cleaned and structured healthcare data foundation for the project.
-
-Module 2 expanded the project into operational intelligence by analyzing patient flow, treatment demand, department workload, department performance, treatment completion, operational bottlenecks, and operational risks.
-
-The final Power BI implementation contains six interactive dashboard pages:
-
-1. Executive Dashboard
-2. Patient Analytics
-3. Admissions Analytics
-4. Facilities Analytics
-5. Staff Analytics
-6. Treatment Analytics
-
-Together, these dashboards provide a comprehensive view of hospital operations and help management understand patient activity, admission patterns, facility capacity, workforce utilization, treatment demand, and operational performance.
-
-## Next Steps
-
-The next module will focus on extending the project based on the requirements of the next milestone, using the existing healthcare data, analysis, and Power BI dashboard as the foundation.
-
-# How to Run the Project
-
-## Install Dependencies
-
-```bash
-pip install pandas numpy matplotlib plotly dash folium geopandas
-pip install pandas numpy matplotlib seaborn plotly dash folium geopandas jupyter notebook openpyxl missingno
-
+```text
+Medical-Operations-Intelligence-Dashboard/
+│
+├── README.md
+│
+├── data/
+│   └── original / processed project datasets
+│
+├── notebooks/
+│   └── EDA and analysis notebooks
+│
+├── dashboard/
+│   └── Hospital_Management_Dashboard by harshada-2.pbix
+│
+├── presentation/
+│   └── project presentations
+│
+└── screenshots/
+    └── Power BI dashboard screenshots
 ```
 
-## Execute Scripts
+> Keep the original dataset unchanged. If a processed dataset is required for the project workflow, keep it as a separate file rather than overwriting the original source.
 
-```bash
-python src/generate_data.py
-python src/data_cleaning.py
+---
 
+# 🤝 Team Collaboration
+
+The project was developed collaboratively using Git/GitHub.
+
+Typical workflow:
+
+```text
+Create / Update Work
+        ↓
+Git Branch
+        ↓
+Development
+        ↓
+Commit
+        ↓
+Push
+        ↓
+Pull Request
+        ↓
+Review
+        ↓
+Merge
+```
+
+Team activities may include:
+
+- Data preparation
+- Data analysis
+- Power BI development
+- Dashboard visualization
+- DAX measures
+- Resource analysis
+- Geographic analysis
+- Documentation
+- Presentation
+
+---
+
+# 👥 Member-Wise Contribution
+
+Replace the placeholders below with the **actual names and actual responsibilities of your team members**.
+
+| Team Member | Actual Contribution |
+|---|---|
+| **Member 1 – [Shambhavi]** | Data collection, preprocessing and data cleaning |
+| **Member 2 – [Harshada]** | Power BI dashboard development and visualizations |
+| **Member 3 – [Khushi]** | Resource utilization, capacity and workforce analysis |
+
+---
+
+# 📋 Project Completion
+
+| Component | Status |
+|---|---|
+| Data Preparation | ✅ Completed |
+| Data Integration | ✅ Completed |
+| Power BI Data Model | ✅ Completed |
+| DAX Measures | ✅ Completed |
+| Patient Analytics | ✅ Completed |
+| Admissions Analytics | ✅ Completed |
+| Facilities Analytics | ✅ Completed |
+| Staff Analytics | ✅ Completed |
+| Treatment Analytics | ✅ Completed |
+| Geographic Performance | ✅ Completed |
+| Insights & Recommendations | ✅ Completed |
+| Final Power BI Dashboard | ✅ Completed |
+
+---
+
+# 🔐 Data Authenticity & Integrity
+
+This documentation is intended to represent the *###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2 *final project as implemented**.
+
+### Data handling principles
+
+- The original dataset should remain unchanged.
+- No artificial records are added to the source data.
+- No dashboard values are manually fabricated for documentation.
+- Dashboard metrics should be taken from the Power BI model/visuals.
+- Table names and fields in this README correspond to the final Power BI model shown in the project.
+- Any future transformation should be stored separately from the original source.
+
+---
+
+# 🏁 Final Outcome
+
+The **** provides an integrated Power BI environment for analyzing:
+
+- Patients
+- Admissions
+- Treatments
+- Staff
+- Beds
+- Facilities
+- Departments
+- Dates
+- Cities
+- Operational KPIs
+
+The final model combines fact tables, dimension tables and a dedicated measures table to support interactive healthcare operations analysis.
+
+The solution helps users move from raw operational information to:
+
+```text
+Data
+ ↓
+Data Model
+ ↓
+Measures
+ ↓
+Dashboard
+ ↓
+Analysis
+ ↓
+Insights
+ ↓
+Recommendations
 ```
 
 ---
 
-# Current Status
+## 📌 Final Project Statement
 
-| Module                                                   | Status      |
-| -------------------------------------------------------- | ----------- |
-| Module 1 – Data Integration & Operational Analytics      | ✅ Completed  |
-| Module 2 – Patient Flow Intelligence                     | ✅ Completed  |
-| Module 3 – Resource Utilization Intelligence             | ✅ Completed  |
-| Module 4 – Geographic Intelligence & Executive Dashboard | Not working  |
+**Medical Operations Intelligence Dashboard** is a Power BI-based healthcare analytics solution that integrates patient, admission, treatment, staff, bed and facility information into an interactive decision-support dashboard.
+
+The project focuses on understanding hospital operations through actual dashboard data while maintaining the integrity of the original dataset.
 
 ---
 
+**Project:** ###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2
+**Batch:** 2 / Team A  
+**Platform:** Microsoft Power BI  
+**Final Report File:** `Hospital_Management_Dashboard by harshada-2.pbix`
