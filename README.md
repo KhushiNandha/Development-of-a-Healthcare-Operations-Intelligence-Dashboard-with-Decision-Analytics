@@ -1,13 +1,14 @@
+# 🏥 Medical Operations Intelligence Dashboard
 
-###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2
+### Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics
 
-**Batch 2 / Team A**
+**Group 2 | Batch 2 / Team A**
 
 ---
 
 ## 📌 Project Overview
 
-The **Medical Operations Intelligence Dashboard** is a Power BI-based healthcare analytics project designed to provide an integrated view of hospital operations.
+The **Healthcare Operations Intelligence Dashboard** is a Power BI-based healthcare analytics project designed to provide an integrated view of hospital operations.
 
 The final Power BI model shown in the project uses the following tables:
 
@@ -23,7 +24,7 @@ The final Power BI model shown in the project uses the following tables:
 
 The dashboard brings patient, admission, treatment, staff, bed, facility, department, date and geographic information together for interactive analysis.
 
-> **Data authenticity note:** This README documents the final Power BI model and dashboard. No new records are added here, and the original source dataset is not modified.
+> **Data authenticity note:** This README documents the final Power BI model and dashboard only. No new records are added, no source values are changed, and the original dataset is not modified.
 
 ---
 
@@ -37,6 +38,287 @@ The dashboard brings patient, admission, treatment, staff, bed, facility, depart
 - Compare facilities and cities.
 - Track clinical and operational KPIs.
 - Provide management-oriented insights through Power BI.
+
+---
+
+
+---
+
+
+## 🧩 Milestone-to-Model Mapping
+
+| Milestone | Main Focus | Final Power BI Evidence |
+|---|---|---|
+| **Milestone 1** | Data preparation & project foundation | Dimension/fact table structure and integrated healthcare model |
+| **Milestone 2** | Patient flow & service demand | `Dim_Patient`, `Fact_Admissions`, `Fact_Treatments`, department analysis and admission/treatment measures |
+| **Milestone 3** | Resources, capacity & workforce | `Fact_Beds`, `Dim_Facility`, `Fact_Staff` and related measures |
+| **Milestone 4** | Geographic performance & insights | Geographic Performance and Insights & Recommendations pages |
+
+> The milestone descriptions explain the development progression of the same project. They do not represent separate or modified datasets.
+
+---
+
+# 📚 Milestone-Wise Project Development
+
+---
+
+# 🔹 Milestone 1 — Data Preparation & Project Foundation
+
+## Objective
+
+The first milestone established the foundation for the **Healthcare Operations Intelligence Dashboard** by organizing the healthcare data required for analysis.
+
+## Work Completed
+
+- Identified the main healthcare entities required for the project.
+- Prepared the project data for analysis.
+- Worked with patient, admission, treatment, staff, bed and facility information.
+- Performed data preparation and integration required for Power BI.
+- Established the department and date dimensions required for analysis.
+- Planned the KPIs and operational questions to be addressed through the dashboard.
+- Used Git/GitHub for collaborative project development.
+
+## Data Entities Established
+
+The final Power BI model contains:
+
+- `Dim_Patient`
+- `Dim_Department`
+- `Dim_Facility`
+- `Dim_Date`
+- `Fact_Admissions`
+- `Fact_Treatments`
+- `Fact_Beds`
+- `Fact_Staff`
+
+A dedicated `_Measures` table contains the analytical measures used in the report.
+
+## Milestone 1 Outcome
+
+The project moved from separate healthcare information sources toward a structured Power BI data model that could support patient, admission, treatment, workforce, facility and capacity analysis.
+
+---
+
+# 🔹 Milestone 2 — Patient Flow & Service Demand Intelligence
+
+## Objective
+
+Milestone 2 focused on understanding **patient flow, admissions, treatment demand and department-level workload**.
+
+## Analysis Performed
+
+### Patient Flow
+
+- Patient activity was analyzed using `Dim_Patient`.
+- Patient demographics were explored using age, gender and city.
+- Registration information was used for time-based patient analysis.
+
+### Admissions Analysis
+
+`Fact_Admissions` was used to analyze:
+
+- Admission activity
+- Admission type
+- Department
+- Admission date
+- Discharge date
+- Length of stay
+- Patient movement
+
+The model also contains measures such as:
+
+- `Admissions`
+- `Discharges`
+- `Avg LOS`
+- `Admission Growth %`
+- `Discharge Growth %`
+- `Net Flow`
+
+### Treatment Demand
+
+`Fact_Treatments` was used to analyze:
+
+- Treatment type
+- Treatment status
+- Treatment date
+- Department
+- Patient treatment activity
+
+The final model contains measures for:
+
+- `Completed Treatments`
+- `Completion Rate`
+- `Cancellation Rate`
+
+## Department Workload
+
+Department-level analysis combines operational activity across the relevant healthcare functions.
+
+The dashboard uses department information from `Dim_Department` together with the fact tables to identify differences in workload and treatment activity.
+
+## Milestone 2 Outcome
+
+Milestone 2 established the patient-flow and service-demand analytical layer of the project and provided the foundation for identifying departments and treatment areas requiring operational attention.
+
+---
+
+# 🔹 Milestone 3 — Resource Utilization, Capacity & Workforce Intelligence
+
+## Objective
+
+Milestone 3 expanded the dashboard from patient and treatment analysis into **resource, capacity and workforce analysis**.
+
+## Bed & Capacity Analysis
+
+`Fact_Beds` and `Dim_Facility` were used to analyze:
+
+- Bed status
+- Bed type
+- Department
+- Facility
+- Total facility beds
+- Available beds
+- Maintenance beds
+- Capacity-related measures
+
+The final `_Measures` table includes:
+
+- `Available Beds`
+- `Capacity Reconciliation Gap`
+- `Maintenance Beds`
+
+## Workforce Analysis
+
+`Fact_Staff` was used to analyze:
+
+- Staff
+- Role
+- Department
+- Assigned shifts
+- Worked shifts
+- Staff efficiency
+
+The final model includes measures such as:
+
+- `Assigned Shifts`
+- `Fulfillment Rate`
+
+## Facility Analysis
+
+`Dim_Facility` provides:
+
+- City
+- Facility ID
+- Facility name
+- Facility type
+- Total beds
+
+This allows facility-level comparisons of healthcare infrastructure and capacity.
+
+## Milestone 3 Outcome
+
+Milestone 3 added resource utilization, bed capacity, facility capacity and workforce intelligence to the dashboard, allowing hospital operations to be viewed beyond patient and treatment activity.
+
+---
+
+# 🔹 Milestone 4 — Geographic Performance & Insights
+
+## Objective
+
+Milestone 4 completed the geographic and management-oriented analysis of the project.
+
+## Geographic Performance
+
+The final dashboard uses city information from the patient and facility dimensions to compare:
+
+- Patients by city
+- Facilities by city
+- Facility bed capacity by city
+- Admissions by city
+
+The page includes interactive filters for:
+
+- City
+- Department
+- Date
+
+## Insights & Recommendations
+
+The final milestone converts the dashboard analysis into management-oriented observations.
+
+The final dashboard includes measures and analytical areas covering:
+
+- Bed utilization
+- Length of stay
+- Workforce performance
+- Treatment completion
+- Capacity
+- Patient flow
+- Workforce deployment
+- Treatment status
+- Geographic demand
+
+## Final Dashboard Insights
+
+The final Power BI analysis reports:
+
+- **63.9% bed occupancy**
+- **7.58 days average length of stay**
+- **84.34% staff efficiency**
+- **75.1% treatment completion**
+- **Neurology** as the highest workload department in the operational analysis
+- **Orthopedics** as the lowest workload department in the operational analysis
+- **Consultation** as the highest-volume treatment type
+- **Neurology** treatment completion rate of **78.35%**
+- **Dermatology** treatment completion rate of **68.85%**
+- **Dermatology** pending treatment rate of **24.59%**
+
+These values are included because they are part of the project dashboard analysis already documented from the Power BI solution.
+
+## Recommendations
+
+Based on the final dashboard analysis:
+
+### Capacity
+Monitor bed utilization and available capacity against demand.
+
+### Patient Flow
+Monitor admissions, discharges and length of stay to identify areas requiring attention.
+
+### Workforce
+Use assigned shifts, worked shifts and staff efficiency to support workforce planning.
+
+### Treatment
+Monitor pending and cancelled treatments by department and treatment type.
+
+### Geographic Performance
+Compare patient activity and facility capacity across cities.
+
+## Milestone 4 Outcome
+
+Milestone 4 completed the geographic analysis and added the final insights and recommendations layer, resulting in the completed Power BI decision-support dashboard.
+
+---
+
+# 🧭 Complete Milestone Journey
+
+```text
+MILESTONE 1
+Data Preparation & Project Foundation
+              ↓
+MILESTONE 2
+Patient Flow & Service Demand
+              ↓
+MILESTONE 3
+Resource Utilization, Capacity & Workforce
+              ↓
+MILESTONE 4
+Geographic Performance & Insights
+              ↓
+FINAL POWER BI DASHBOARD
+              ↓
+Management Decision Support
+```
 
 ---
 
@@ -72,7 +354,7 @@ The final model is organized around dimension tables and fact tables.
               └───────────────┘
 ```
 
-The exact relationships and fields used in the final model are documented below according to the Power BI model.
+The table names, fields and measures documented below follow the final Power BI model reference supplied for this project.
 
 ---
 
@@ -441,7 +723,6 @@ The Power BI analysis identifies the following department-level observations:
 - Dermatology recorded a treatment completion rate of **68.85%**.
 - Dermatology recorded the highest pending treatment rate at **24.59%**.
 
-These findings are based on the analytical values represented in the project dashboard.
 
 ---
 
@@ -541,33 +822,6 @@ Management Decision Support
 
 ---
 
-# 📁 Final Project Structure
-
-A recommended repository structure is:
-
-```text
-Medical-Operations-Intelligence-Dashboard/
-│
-├── README.md
-│
-├── data/
-│   └── original / processed project datasets
-│
-├── notebooks/
-│   └── EDA and analysis notebooks
-│
-├── dashboard/
-│   └── Hospital_Management_Dashboard by harshada-2.pbix
-│
-├── presentation/
-│   └── project presentations
-│
-└── screenshots/
-    └── Power BI dashboard screenshots
-```
-
-> Keep the original dataset unchanged. If a processed dataset is required for the project workflow, keep it as a separate file rather than overwriting the original source.
-
 ---
 
 # 🤝 Team Collaboration
@@ -610,13 +864,12 @@ Team activities may include:
 
 # 👥 Member-Wise Contribution
 
-Replace the placeholders below with the **actual names and actual responsibilities of your team members**.
-
-| Team Member | Actual Contribution |
+| Team Member | Contribution |
 |---|---|
-| **Member 1 – [Shambhavi]** | Data collection, preprocessing and data cleaning |
-| **Member 2 – [Harshada]** | Power BI dashboard development and visualizations |
-| **Member 3 – [Khushi]** | Resource utilization, capacity and workforce analysis |
+| **Shambhavi** | Data collection, preprocessing and data cleaning |
+| **Harshada** | Power BI dashboard development and visualizations |
+| **Khushi** | Resource utilization, capacity and workforce analysis |
+
 
 ---
 
@@ -641,7 +894,7 @@ Replace the placeholders below with the **actual names and actual responsibiliti
 
 # 🔐 Data Authenticity & Integrity
 
-This documentation is intended to represent the *###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2 *final project as implemented**.
+This documentation is intended to represent the **final Power BI project as implemented**.
 
 ### Data handling principles
 
@@ -656,7 +909,7 @@ This documentation is intended to represent the *###  Development of a Healthcar
 
 # 🏁 Final Outcome
 
-The **** provides an integrated Power BI environment for analyzing:
+The **Healthcare Operations Intelligence Dashboard** provides an integrated Power BI environment for analyzing:
 
 - Patients
 - Admissions
@@ -693,13 +946,14 @@ Recommendations
 
 ## 📌 Final Project Statement
 
-**Medical Operations Intelligence Dashboard** is a Power BI-based healthcare analytics solution that integrates patient, admission, treatment, staff, bed and facility information into an interactive decision-support dashboard.
+**Healthcare Operations Intelligence Dashboard** is a Power BI-based healthcare analytics solution that integrates patient, admission, treatment, staff, bed and facility information into an interactive decision-support dashboard.
 
 The project focuses on understanding hospital operations through actual dashboard data while maintaining the integrity of the original dataset.
 
 ---
 
-**Project:** ###  Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics Group 2
+**Project:**Development of a Healthcare Operations Intelligence Dashboard with Decision Analytics 
+**Group:** 2  
 **Batch:** 2 / Team A  
 **Platform:** Microsoft Power BI  
 **Final Report File:** `Hospital_Management_Dashboard by harshada-2.pbix`
