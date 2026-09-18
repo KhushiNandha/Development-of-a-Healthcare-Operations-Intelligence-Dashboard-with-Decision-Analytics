@@ -11,7 +11,7 @@ The dashboard is designed to help users move from a high-level understanding of 
 
 ## 🔗 Live Dashboard
 
-![Hospital_Management_Dashboard](./src/Hospital%20Management%20Dashboard.jpg)
+![Hospital_Management_Dashboard](./src/Hospital_Management_Dashboard.jpg)
 [**View Live Power BI Dashboard →**](https://app.powerbi.com/view?r=eyJrIjoiZjNkM2M4MmItMjc0ZC00OTEyLWJhZDgtOTdlMDI5ODgzMTUyIiwidCI6IjNjYmNmZWY2LWUxZGEtNDEyNy04Nzg0LTAyZmQ1ZmJkMWZlNCJ9&pageName=ee3c1ea0d0b6e6b65902)
 
 ---
@@ -40,7 +40,7 @@ The project focuses on:
 
 The project uses a healthcare operations dataset containing information related to patients, admissions, treatments, beds, staff, and facilities.
 
-![Data_Model](./src/Data%20Model.jpg)
+![Data_Model](./src/Data_Model.jpg)
 The data model follows a Star Schema, with dimension tables providing descriptive context and fact tables containing operational records.
 
 ### Data Model Tables
