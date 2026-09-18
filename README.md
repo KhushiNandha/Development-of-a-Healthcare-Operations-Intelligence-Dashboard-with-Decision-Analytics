@@ -1,8 +1,6 @@
 # 🏥 Hospital Management Dashboard
 ## Healthcare Operations Intelligence Dashboard with Decision Analytics
 
-**Group 2 · Batch 2 · Team A**
-
 The Hospital Management Dashboard is an interactive healthcare operations intelligence and decision-analytics solution developed in Microsoft Power BI. It transforms hospital operational data into a centralized analytical view covering patients, admissions, treatments, facilities, beds, workforce, and geographic performance.
 
 The dashboard is designed to help users move from a high-level understanding of hospital operations to detailed operational analysis, identify meaningful patterns, compare departments and locations, and translate findings into management-oriented insights and recommendations.
